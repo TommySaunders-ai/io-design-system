@@ -1,65 +1,235 @@
-import Image from "next/image";
+import { CodeBlock } from "@/components/docs/code-block";
 
-export default function Home() {
+const features = [
+  {
+    title: "Foundations",
+    description:
+      "Design tokens for colors, typography, spacing, radius, and shadows. A consistent visual language across every surface.",
+    href: "/colors",
+    icon: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <circle cx="12" cy="12" r="4" />
+        <line x1="12" y1="2" x2="12" y2="6" />
+        <line x1="12" y1="18" x2="12" y2="22" />
+        <line x1="2" y1="12" x2="6" y2="12" />
+        <line x1="18" y1="12" x2="22" y2="12" />
+      </svg>
+    ),
+  },
+  {
+    title: "Components",
+    description:
+      "Button, Badge, Card, Input, Modal, Tabs, and more. Built with accessibility and composability in mind.",
+    href: "/button",
+    icon: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <rect x="3" y="3" width="7" height="7" rx="2" />
+        <rect x="14" y="3" width="7" height="7" rx="2" />
+        <rect x="3" y="14" width="7" height="7" rx="2" />
+        <rect x="14" y="14" width="7" height="7" rx="2" />
+      </svg>
+    ),
+  },
+  {
+    title: "Patterns",
+    description:
+      "Dot grids, frosted glass, gradient actions, hover lift, glow focus. Reusable visual patterns for every layout.",
+    href: "/dot-background",
+    icon: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2" />
+        <line x1="12" y1="22" x2="12" y2="15.5" />
+        <polyline points="22 8.5 12 15.5 2 8.5" />
+      </svg>
+    ),
+  },
+];
+
+const quickStartCode = `pnpm create next-app io-app --typescript
+cd io-app
+pnpm add @io/design-system`;
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <div>
+      {/* Hero */}
+      <section style={{ marginBottom: 64 }}>
+        <h1
+          style={{
+            fontSize: 48,
+            fontWeight: 300,
+            letterSpacing: "-1.2px",
+            color: "#0a0a0a",
+            margin: 0,
+            lineHeight: 1.15,
+          }}
+        >
+          <span className="gradient-text" style={{ fontWeight: 600 }}>
+            IO
+          </span>{" "}
+          Design System
+        </h1>
+        <p
+          style={{
+            fontSize: 18,
+            fontWeight: 500,
+            color: "#525252",
+            marginTop: 12,
+            marginBottom: 8,
+          }}
+        >
+          Personal AI Operating System
+        </p>
+        <p
+          style={{
+            fontSize: 14,
+            color: "#a3a3a3",
+            lineHeight: 1.6,
+            maxWidth: 520,
+            marginTop: 0,
+          }}
+        >
+          Design tokens, components, and patterns for building
+          IntelligentOperations.ai. A gradient-first, frosted-glass system with
+          no emoji, ever.
+        </p>
+
+        <div style={{ marginTop: 32 }}>
+          <a href="/quick-start" className="gradient-btn">
+            Get Started
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      {/* Quick start snippet */}
+      <section style={{ marginBottom: 64 }}>
+        <h2
+          style={{
+            fontSize: 18,
+            fontWeight: 600,
+            color: "#0a0a0a",
+            marginBottom: 4,
+          }}
+        >
+          Quick Start
+        </h2>
+        <p
+          style={{
+            fontSize: 14,
+            color: "#525252",
+            marginBottom: 0,
+          }}
+        >
+          Get up and running in under a minute.
+        </p>
+        <CodeBlock code={quickStartCode} language="bash" />
+      </section>
+
+      {/* Feature cards */}
+      <section>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gap: 20,
+          }}
+        >
+          {features.map((feature) => (
             <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              key={feature.title}
+              href={feature.href}
+              className="hover-lift"
+              style={{
+                display: "block",
+                padding: 24,
+                background: "#ffffff",
+                border: "1px solid #e5e5e5",
+                borderRadius: 16,
+                textDecoration: "none",
+                boxShadow: "0 1px 3px rgba(0,0,0,0.08)",
+              }}
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              <div
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 12,
+                  background:
+                    "linear-gradient(135deg, #ede9fe, #dbeafe)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: "#7c3aed",
+                  marginBottom: 16,
+                }}
+              >
+                {feature.icon}
+              </div>
+              <h3
+                style={{
+                  fontSize: 16,
+                  fontWeight: 600,
+                  color: "#0a0a0a",
+                  margin: "0 0 8px",
+                }}
+              >
+                {feature.title}
+              </h3>
+              <p
+                style={{
+                  fontSize: 13,
+                  color: "#525252",
+                  lineHeight: 1.5,
+                  margin: 0,
+                }}
+              >
+                {feature.description}
+              </p>
+            </a>
+          ))}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </section>
     </div>
   );
 }

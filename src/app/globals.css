@@ -1,26 +1,273 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ========================================
+   IO Design System -- Design Tokens
+   ======================================== */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-page: #fafafa;
+  --color-surface: #ffffff;
+  --color-alt: #f5f5f5;
+  --color-hover: #ebebeb;
+  --color-primary: #7c3aed;
+  --color-primary-light: #ede9fe;
+  --color-info: #2563eb;
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+  --color-text-primary: #0a0a0a;
+  --color-text-secondary: #525252;
+  --color-text-tertiary: #a3a3a3;
+  --color-border: #e5e5e5;
+  --color-border-active: #d4d4d4;
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  /* Backgrounds */
+  --bg-page: #fafafa;
+  --bg-surface: #ffffff;
+  --bg-alt: #f5f5f5;
+  --bg-hover: #ebebeb;
+
+  /* Primary */
+  --primary-gradient: linear-gradient(135deg, #7c3aed, #2563eb);
+  --primary-solid: #7c3aed;
+  --primary-light: #ede9fe;
+
+  /* Semantic */
+  --success: #16a34a;
+  --success-light: #dcfce7;
+  --warning: #d97706;
+  --warning-light: #fef3c7;
+  --danger: #dc2626;
+  --danger-light: #fee2e2;
+  --info: #2563eb;
+  --info-light: #dbeafe;
+
+  /* Text */
+  --text-primary: #0a0a0a;
+  --text-secondary: #525252;
+  --text-tertiary: #a3a3a3;
+
+  /* Borders */
+  --border: #e5e5e5;
+  --border-active: #d4d4d4;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow-glow: 0 4px 20px rgba(124, 58, 237, 0.3);
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-9: 40px;
+  --space-10: 48px;
+  --space-11: 56px;
+  --space-12: 64px;
+
+  /* Layout */
+  --sidebar-width: 260px;
+  --topbar-height: 56px;
+}
+
+/* ========================================
+   Base
+   ======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background-color: var(--primary-light);
+  color: var(--primary-solid);
+}
+
+/* ========================================
+   Dot Grid Background
+   ======================================== */
+
+.dot-grid {
+  background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ========================================
+   Frosted Glass
+   ======================================== */
+
+.frosted-glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ========================================
+   Gradient Text
+   ======================================== */
+
+.gradient-text {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ========================================
+   Hover Lift
+   ======================================== */
+
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ========================================
+   Focus Glow
+   ======================================== */
+
+.focus-glow:focus,
+.focus-glow:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-glow);
+  border-color: var(--primary-solid);
+}
+
+/* ========================================
+   Code Block
+   ======================================== */
+
+.code-block {
+  background: #0a0a0a;
+  color: #e5e5e5;
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono), monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-x: auto;
+  position: relative;
+}
+
+.code-block pre {
+  margin: 0;
+  padding: var(--space-6);
+  padding-top: var(--space-9);
+}
+
+.code-block code {
+  font-family: inherit;
+  font-size: inherit;
+  background: none;
+  padding: 0;
+  border: none;
+}
+
+.code-block .line-number {
+  display: inline-block;
+  width: 2.5em;
+  text-align: right;
+  margin-right: 1em;
+  color: #525252;
+  user-select: none;
+}
+
+/* ========================================
+   Inline Code
+   ======================================== */
+
+code:not(.code-block code) {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.875em;
+  background: var(--bg-alt);
+  color: var(--primary-solid);
+  padding: 2px 6px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+/* ========================================
+   Scrollbar
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-active);
+}
+
+/* ========================================
+   Gradient Button
+   ======================================== */
+
+.gradient-btn {
+  background: var(--primary-gradient);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-6);
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: inherit;
+}
+
+.gradient-btn:hover {
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-1px);
+}
+
+.gradient-btn:active {
+  transform: translateY(0);
 }
